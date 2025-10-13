@@ -1,0 +1,111 @@
+Desarrollar una aplicación web interactiva usando **Streamlit (Python)** que implemente autenticación básica y un dashboard con distintas opciones de análisis de datos y modelos de Machine Learning.
+
+### 🧩 Módulo de Autenticación
+- Pantallas de **registro** y **login**:
+  - Registro con los campos: correo, nombre, código de estudiante (6 dígitos) y contraseña.
+  - Inicio de sesión con correo y contraseña.
+- Validaciones de:
+  - Formato de correo.
+  - Longitud del código de estudiante.
+  - Contraseña obligatoria.
+- Guardar usuarios registrados en un archivo local (`usuarios.csv` o `usuarios.json`).
+- Mostrar un mensaje de bienvenida y redirigir al dashboard después de iniciar sesión correctamente.
+
+---
+
+### 📊 Dashboard Principal
+Una vez autenticado, mostrar un **panel interactivo** con menú lateral (sidebar) que contenga varias **opciones de análisis**, integrando los algoritmos vistos durante la unidad.  
+Cada opción debe tener su propia interfaz, visualización y resultados.
+
+---
+
+### 🔹 Opción 1: Carga y procesamiento de datos
+- Permitir **subir archivos CSV o Excel** con datos (por ejemplo, rendimiento de automóviles).
+- Mostrar:
+  - Primeras filas del dataset.
+  - Información general: columnas, tipos de datos, valores nulos.
+  - Conteo de valores faltantes por columna.
+- Botón para **rellenar los valores nulos con el promedio**.
+- Verificar nuevamente que ya no queden valores nulos.
+- Convertir variables categóricas a numéricas con `LabelEncoder` o `get_dummies()`.
+- Eliminar o editar una categoría para evitar colinealidad.
+- Visualizar los resultados en tabla interactiva (`st.dataframe`).
+
+---
+
+### 🔹 Opción 2: Modelos de Regresión
+Aplicar y comparar modelos de **regresión lineal y no lineal**, analizando coeficientes, errores y regularización.
+
+Modelos:
+- Regresión múltiple lineal  
+- Transformación de variables y espacio de mayor dimensión  
+- Regresión con base radial (RBF)  
+- Kernel polinómico  
+- Regularización Ridge  
+- Regularización Lasso  
+
+Mostrar:
+- Gráficos de dispersión y línea de regresión (con `matplotlib` o `seaborn`).
+- Métricas: R², MSE, RMSE.
+- Interpretación de coeficientes y error.
+
+---
+
+### 🔹 Opción 3: Modelos Logísticos
+Entrenar y evaluar modelos de **regresión logística** sobre datos categorizados.
+- Mostrar probabilidades y clasificaciones.
+- Calcular y graficar:
+  - Log-odds
+  - Función sigmoide
+  - Curva ROC y área bajo la curva (AUC)
+- Métricas: Exactitud, Precisión, Recall, F1-score.
+- Visualización de matriz de confusión.
+
+---
+
+### 🔹 Opción 4: Árboles de Decisión
+Generar y analizar árboles de decisión sobre los datos cargados.
+- Modelos: ID3, C4.5, CART (usando `DecisionTreeClassifier` o `DecisionTreeRegressor` de sklearn).
+- Dividir datos:
+  - 80% entrenamiento  
+  - 20% prueba  
+  - `random_state` para reproducibilidad
+- Mostrar:
+  - Profundidad del árbol
+  - Importancia de variables
+  - Ganancia de información
+  - Gráfico del árbol (`sklearn.tree.plot_tree`)
+  - Evaluación: R² cercano a 1 (buen ajuste) o 0 (mal ajuste)
+
+---
+
+### 🔹 Opción 5: Generación de Reporte PDF
+- Generar un **reporte en PDF** con los resultados de todos los modelos:
+  - Tablas de métricas
+  - Gráficos de rendimiento
+  - Parámetros de entrenamiento
+- Botón para **descargar el PDF**.
+- Usar `reportlab` o `fpdf` para crear el archivo.
+
+---
+
+### ⚙️ Requisitos técnicos
+- Estructura modular: separar las funciones en distintos archivos (`auth.py`, `preprocesamiento.py`, `modelos.py`, `reportes.py`, `app.py`).
+- Librerías sugeridas:
+  - `streamlit`, `pandas`, `numpy`, `scikit-learn`, `matplotlib`, `seaborn`, `fpdf` o `reportlab`
+- Interfaz moderna y clara con:
+  - Sidebar de navegación (`st.sidebar`)
+  - Componentes interactivos (`st.selectbox`, `st.slider`, `st.button`, etc.)
+  - Gráficos dinámicos.
+- Opción de tema claro/oscuro (usando configuración nativa de Streamlit).
+- Código comentado y organizado.
+
+---
+
+### 📦 Resultado esperado
+1. Aplicación funcional ejecutable con `streamlit run app.py`
+2. Sistema de login/registro con persistencia local.
+3. Dashboard con las 5 opciones activas y visualizaciones.
+4. Generación y descarga de reporte PDF con resultados del análisis.
+5. Código modular, comentado y con manejo de errores básicos.
+
