@@ -14,7 +14,7 @@ import os
 # Configuración de la página
 st.set_page_config(
     page_title="ML Dashboard",
-    page_icon="📊",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
